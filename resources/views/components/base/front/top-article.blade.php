@@ -1,9 +1,9 @@
 <div>
     <div>
-        <img src="./public/image/" class="img-fluid" alt="Responsive image">
+        <img src="{{ asset('storage/images' . $article->image) }}" class="img-fluid" alt="Responsive image">
     </div>
     <div>
-        <h1 class="">VR Is the Use of Computer Technology to Create a Simulated Environment.</h1>
+        <h1 class="">{{ $article->title }}</h1>
     </div>
     <div>
         <ul class="nav justify-content-start gap-5">
