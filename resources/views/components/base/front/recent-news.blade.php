@@ -8,6 +8,6 @@
 </div>
 <div class="mb-3">
     @foreach ($news as $news_item)
-        <x-base.front.article-without-description :id="$news_item->id" />
+        <x-base.front.article-with-without-description :id="$news_item->id" :desc="false" />
     @endforeach
 </div>

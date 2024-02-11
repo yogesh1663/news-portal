@@ -3,17 +3,22 @@
 namespace App\View\Components\base\front;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Article;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class ArticleWithWithoutDescription extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $article;
+    public $desc;
+    public function __construct($id, $desc)
     {
-        //
+        // $this->article = Article::find($id);
+
+        return [$this->article = Article::find($id), $this->desc = $desc];
     }
 
     /**
