@@ -6,8 +6,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\File;
-use function PHPUnit\Framework\fileExists;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -16,8 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // $categories = Category::orderBy('id', 'DESC')->get();
-        $categories = Category::get()->sortByDesc('id');
+        $categories = Category::withCount('articles')->orderBy('id', 'DESC')->paginate(2);
         return view('category.index', ['categories' => $categories]);
     }
 
@@ -34,7 +32,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        $request->validate([
+            'title' => 'required',
+            'slug' => 'nullable|unique:categories,slug',
+            'description' => 'required',
+            'image' => 'nullable|file|'
+        ]);
         if ($request->slug == NULL || $request->slug == "") {
             $slug = Str::slug($request->title);
         } else {
@@ -82,6 +85,11 @@ class CategoryController extends Controller
         if ($request->image) {
             $filename = time() . "." . $slug . "." . $request->image->extension();
             $request->image->storeAs('public/image/', $filename);
+            if ($category->image) {
+                if (Storage::exists('public/image/' . $category->image)) {
+                    Storage::delete('public/image/' . $category->image);
+                }
+            }
         }
 
         $category->title = $request->title;
@@ -99,11 +107,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        // dd($category->image);
-        if (File::exists('public/image/' . $category->image)) {
-            echo "exists";
+        if ($category->image) {
+            if (Storage::exists('public/image/' . $category->image)) {
+                Storage::delete('public/image/' . $category->image);
+            }
         }
-        die();
         $category->delete();
         return redirect()->route('category.index')->with('success', 'Category data has been successfully deleted.');
     }
