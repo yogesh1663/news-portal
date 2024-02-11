@@ -1,4 +1,4 @@
-<div class="bg-light text-white border-bottom">
+<div class="bg-light text-dark border-bottom">
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -18,12 +18,15 @@
                             </li>
                         @endforeach
                     </ul>
-                    <span class="navbar-text mt-1">
-                        <ul class="d-flex gap-3">
-                            <li class="d-inline"><a href="">login </a></li>
-                            <li class="d-inline"><a href=""> register</a></li>
-                        </ul>
-                    </span>
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Register</a>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </nav>

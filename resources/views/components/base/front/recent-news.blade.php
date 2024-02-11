@@ -1,10 +1,6 @@
-<div class="d-flex justify-content-between mb-3">
-    <div class="col-6">
-        <h4>Recent news</h4>
-    </div>
-    <div class="col-6 text-end">
-        <a href="">All recent news</a>
-    </div>
+<div class="mb-3 bg-black text-white d-flex justify-content-between align-items-center p-2">
+    <h4>Recent News</h4>
+    <a href="">All recent news</a>
 </div>
 <div class="mb-3">
     @foreach ($news as $news_item)
