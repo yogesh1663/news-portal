@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ArticleWithoutDescription extends Component
+class ArticleWithDescription extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class ArticleWithoutDescription extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.base.front.article-without-description');
+        return view('components.base.front.article-with-description');
     }
 }

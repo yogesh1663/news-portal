@@ -2,20 +2,18 @@
 
 namespace App\View\Components\base\front;
 
-use App\Models\Article;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ArticleWithoutDescription extends Component
+class ArticleWithWithoutDescription extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $article;
-    public function __construct($id)
+    public function __construct()
     {
-        $this->article = Article::find($id);
+        //
     }
 
     /**
@@ -23,6 +21,6 @@ class ArticleWithoutDescription extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.base.front.article-without-description');
+        return view('components.base.front.article-with-without-description');
     }
 }

@@ -13,10 +13,10 @@
     <x-base.back.navbar />
     <div class="container mt-4">
         <div class="row">
-            <div class="col-3">
+            <div class="col-2">
                 <x-base.back.sidebar />
             </div>
-            <div class="col-9">
+            <div class="col-10">
                 <div class="card">
                     <div class="card-body">
                         {{ $slot }}

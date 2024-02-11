@@ -31,7 +31,7 @@
                         @endif
                     </td>
                     <td>{{ $article->status }}</td>
-                    <td>{{ $article->category_id }}</td>
+                    <td>{{ $article->category->title }}</td>
                     <td>{{ $article->views }}</td>
                     <td>
                         <a href="{{ route('article.edit', $article->id) }}" class="btn btn-success btn-sm">Edit</a>
